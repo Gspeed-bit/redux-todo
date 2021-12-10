@@ -5,11 +5,11 @@ import Input from './components/Input';
 function App() {
   return (
     <div className="App">
+    <Input/>
 
       {/* INPUT
       CHECK
       TODOLIST */}
-    <Input/>
 
     </div>
   );

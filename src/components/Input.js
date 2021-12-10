@@ -1,18 +1,30 @@
 import React, {useState} from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import './Input.css';
+import { storeTodo } from '../features/Todo/todoSlice';
+
 const Input = () => {
 
   const [inputValue, setInputValue] = useState("")
+  const dispatch = useDispatch();
 
 
+  const addTodo =()=>{
+    console.log(`Adding ${inputValue}`)
+
+    dispatch(storeTodo({
+      item:inputValue,
+      done: false,
+      id: Date.now()
+    }))
+
+  }
 
   const handleChange = (event) =>{
     setInputValue(event.target.value);
   }
 
-  const handleClick = () =>{
-    
-  }
+
   return (
     <div className='input'>
       <input type="text" 
@@ -20,7 +32,7 @@ const Input = () => {
       onChange={handleChange}
       placeholder='To do list...'
       />
-      <button onClick={handleClick}>ADD!</button>
+      <button onClick={addTodo}>ADD!</button>
     </div>
   )
 }
